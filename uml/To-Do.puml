@@ -1,0 +1,42 @@
+@startuml
+
+Class App{
++ main(args : String[]) : void
++ start(primaryStage : Stage) : void
+}
+
+Class EditItem{
++ Edit_Completion(status: boolean): boolean
++ Edit_Description(description: String): String
++ Edit_DueDate(Due_date: Date): Date
+}
+
+Class List{
++ Add_List(items : ArrayList<EditItem>, item : EditItem): ArrayList<EditItem>
++ Remove_List(items : ArrayList<EditItem>, item : EditItem): ArrayList<EditItem>
++ Save_List(Save : String) : void
++ Load_List(FileName : String) : void
+}
+Class AppController{
+- Statusbox: ComboBox
+- SortBox : ComboBox
+- NewItemButton : JFXButton
+- MenuBar : MenuBar
+- LoadListButton : JFXButton
+- LoadAllButton : JFXButton
+- EdititemButton : JFXButton
+- EditButton L JFXButton
+- DueDate : DatePicker
+- Description : TextField
+- DeleteListButton : JFXButton
+- DeleteItemButton : JFXButton
+- CheckItemComplete: JFXCheckBox
+- AddNewListButton: JFXButton
+}
+
+List <- EditItem
+AppController - EditItem
+AppController - List
+App <- AppController
+App -|> javafx.application.Application
+@enduml
